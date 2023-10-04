@@ -1,11 +1,16 @@
 import requests
 import key
+import tweepy
 
-headers = {
-    "Authorization": f"Bearer {key.BEARER_TOKEN}"
-}
+client = tweepy.Client(key.BEARER_TOKEN, key.API_KEY, key.API_KEY_SECRET, key.ACCESS_TOKEN, key.ACCESS_TOKEN_SECRET)
+oauth2_user_handler = tweepy.OAuth2UserHandler(
+    client_id=key.API_KEY,
+    redirect_uri="",
+    scope="",
+    client_secret=key.CLIENT_SECRET
+)
+print(oauth2_user_handler.get_authorization_url())
 
-r = requests.get("https://api.twitter.com/2/tweets/search/recent?query=from:twitterdev", headers=headers)
+client.create_tweet(text="Hi")
 
-print(r.status_code)
-print(r.text)
+
