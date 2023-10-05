@@ -11,22 +11,28 @@ oauth2_user_handler = tweepy.OAuth2UserHandler(
     client_secret=key.CLIENT_SECRET
 )
 
-id = 27851463
 
 auth = tweepy.OAuth1UserHandler(key.API_KEY, key.API_KEY_SECRET, key.ACCESS_TOKEN, key.ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 print(oauth2_user_handler.get_authorization_url())
 
-oauth = OAuth1Session(key.API_KEY, client_secret=key.API_KEY_SECRET)
-
-request_token_url = "https://api.twitter.com/oauth/request_token"
-response = oauth.fetch_request_token(request_token_url)
-
-resource_owner_key = response.get("oauth_token")
-resource_owner_secret = response.get("oauth_token_secret")
-print("OAuth Token" % resource_owner_key)
-
+tweet_id_test = 1709758382083817636
 
 #tweet text
 # client.create_tweet(text="Hi")
 
+# like/unlike tweet
+client.like(tweet_id_test)
+client.unlike(temp_post_id)
+
+
+# TWITTER API GUIDE(MIGHT NOT NEED SINCE USING TWEEPY)
+# oauth = OAuth1Session(key.API_KEY, client_secret=key.API_KEY_SECRET)
+#
+# request_token_url = "https://api.twitter.com/oauth/request_token"
+# response = oauth.fetch_request_token(request_token_url)
+#
+# resource_owner_key = response.get("oauth_token")
+# resource_owner_secret = response.get("oauth_token_secret")
+# print("OAuth Token" % resource_owner_key)
+# id = 27851463
